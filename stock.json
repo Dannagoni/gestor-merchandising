@@ -1,0 +1,32 @@
+{
+    "camisas": {
+        "basica blanca": 10,
+        "basica negra": 10,
+        "manga larga": 10
+    },
+    "pantalones": {
+        "jean": 10,
+        "cargo": 10,
+        "algodon": 10,
+        "lino": 10
+    },
+    "vestidos": {
+        "bodycon": 10,
+        "strapless": 10,
+        "bubble": 10,
+        "veraniego": 10
+    },
+    "chaquetas": {
+        "cuero": 12,
+        "americana": 10,
+        "blazer": 7,
+        "gabardina": 0,
+        "chaleco": 7
+    },
+    "zapatos": {
+        "borcegos": 10
+    },
+    "chanclas": {
+        "azules": 10
+    }
+}

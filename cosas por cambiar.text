@@ -1,0 +1,15 @@
+estado activo/inactivo
+archivo log -> loguear las funciones crud(usuarios, stock, etc)
+verificar stock
+
+confirmar compra
+
+cambiar la contraseña de los usuarios de prueba
+cambiar comentarios
+fijarme el tema que el cliente pueda eliminar el usuario
+regex para q sea mas especifico
+q pueda dar siempre un espacoi
+creo q hay dos funciones de validaciones
+poner mas profesional los json
+poner en todos enter para cancelar
+

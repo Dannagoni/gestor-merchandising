@@ -1,0 +1,174 @@
+[
+    {
+        "cliente_email": "gabriela@gmail.com",
+        "items": [
+            {
+                "categoria": "chaquetas",
+                "producto": "americana",
+                "cantidad": 2,
+                "precio_unitario": 40.0,
+                "subtotal": 80.0
+            },
+            {
+                "categoria": "pantalones",
+                "producto": "cargo",
+                "cantidad": 5,
+                "precio_unitario": 35.0,
+                "subtotal": 175.0
+            }
+        ],
+        "costo_total": 255.0
+    },
+    {
+        "cliente_email": "gabriela@gmail.com",
+        "items": [
+            {
+                "categoria": "camisas",
+                "producto": "basica blanca",
+                "cantidad": 2,
+                "precio_unitario": 10.0,
+                "subtotal": 20.0
+            }
+        ],
+        "costo_total": 20.0
+    },
+    {
+        "cliente_email": "gabriela@gmail.com",
+        "items": [
+            {
+                "categoria": "vestidos",
+                "producto": "bodycon",
+                "cantidad": 1,
+                "precio_unitario": 17.0,
+                "subtotal": 17.0
+            }
+        ],
+        "costo_total": 17.0
+    },
+    {
+        "cliente_email": "kiara@gmail.com",
+        "items": [
+            {
+                "categoria": "Camisas",
+                "producto": "Basica Blanca",
+                "cantidad": 8,
+                "precio_unitario": 10.0,
+                "subtotal": 80.0
+            }
+        ],
+        "costo_total": 80.0
+    },
+    {
+        "cliente_email": "dannag@gmail.com",
+        "items": [
+            {
+                "categoria": "camisas",
+                "producto": "basica blanca",
+                "cantidad": 10,
+                "precio_unitario": 10.0,
+                "subtotal": 100.0
+            }
+        ],
+        "costo_total": 100.0
+    },
+    {
+        "cliente_email": "otraprueba@gmail.com",
+        "items": [
+            {
+                "categoria": "camisas",
+                "producto": "basica blanca",
+                "cantidad": 10,
+                "precio_unitario": 10.0,
+                "subtotal": 100.0
+            },
+            {
+                "categoria": "zapatos",
+                "producto": "borcegos",
+                "cantidad": 10,
+                "precio_unitario": 89.99,
+                "subtotal": 899.9
+            }
+        ],
+        "costo_total": 999.9
+    },
+    {
+        "cliente_email": "pruebita@gmail.com",
+        "items": [
+            {
+                "categoria": "camisas",
+                "producto": "basica negra",
+                "cantidad": 1,
+                "precio_unitario": 10.0,
+                "subtotal": 10.0
+            },
+            {
+                "categoria": "chaquetas",
+                "producto": "blazer",
+                "cantidad": 1,
+                "precio_unitario": 60.0,
+                "subtotal": 60.0
+            }
+        ],
+        "costo_total": 70.0
+    },
+    {
+        "cliente_email": "kiara@gmail.com",
+        "items": [
+            {
+                "categoria": "camisas",
+                "producto": "basica blanca",
+                "cantidad": 1,
+                "precio_unitario": 10.0,
+                "subtotal": 10.0
+            },
+            {
+                "categoria": "chaquetas",
+                "producto": "blazer",
+                "cantidad": 1,
+                "precio_unitario": 60.0,
+                "subtotal": 60.0
+            },
+            {
+                "categoria": "zapatos",
+                "producto": "borcegos",
+                "cantidad": 10,
+                "precio_unitario": 89.99,
+                "subtotal": 899.9
+            }
+        ],
+        "costo_total": 969.9
+    },
+    {
+        "cliente_email": "djsergio@gmail.com",
+        "items": [
+            {
+                "categoria": "chaquetas",
+                "producto": "gabardina",
+                "cantidad": 10,
+                "precio_unitario": 120.0,
+                "subtotal": 1200.0
+            }
+        ],
+        "costo_total": 1200.0
+    },
+    {
+        "cliente_email": "hola@gmail.com",
+        "items": [
+            {
+                "categoria": "camisas",
+                "producto": "basica blanca",
+                "cantidad": 2,
+                "precio_unitario": 10.0,
+                "subtotal": 20.0
+            },
+            {
+                "categoria": "chaquetas",
+                "producto": "chaleco",
+                "cantidad": 3,
+                "precio_unitario": 25.0,
+                "subtotal": 75.0
+            }
+        ],
+        "costo_total": 95.0
+    }
+]

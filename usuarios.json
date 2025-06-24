@@ -1,0 +1,68 @@
+{
+    "ceo@gmail.com": {
+        "nombre": "Danna Goni CEO",
+        "contraseña": "CeoPass123*",
+        "rol": "administrador",
+        "activo": true
+    },
+    "jefa@gmail.com": {
+        "nombre": "Gaby Espinosa",
+        "contraseña": "contraseña123@",
+        "rol": "administrador",
+        "activo": true
+    },
+    "supervisor@gmail.com": {
+        "nombre": "Nico Bayon",
+        "contraseña": "contraseña456@",
+        "rol": "administrador",
+        "activo": true
+    },
+    "agus@gmail.com": {
+        "nombre": "Agustin Fernandez",
+        "contraseña": "contraseña789@",
+        "rol": "cliente",
+        "activo": true
+    },
+    "roma@gmail.com": {
+        "nombre": "Roma Moyano",
+        "contraseña": "contaseña111*",
+        "rol": "cliente",
+        "activo": true
+    },
+    "kiara@gmail.com": {
+        "nombre": "Kiara Moyano",
+        "contraseña": "contraseña111*",
+        "rol": "cliente",
+        "activo": true
+    },
+    "figa@gmail.com": {
+        "nombre": "Bauti Crespo",
+        "contraseña": "contraseña777*",
+        "rol": "cliente",
+        "activo": true
+    },
+    "djsergio@gmail.com": {
+        "nombre": "Sebastian Villavicenio",
+        "contraseña": "contraseña121*",
+        "rol": "cliente",
+        "activo": true
+    },
+    "gabriela@gmail.com": {
+        "nombre": "Gabriela Espinosa",
+        "contraseña": "contraseña123*",
+        "rol": "cliente",
+        "activo": true
+    },
+    "ruby@gmail.com": {
+        "nombre": "Ruby Fernandez Moyano",
+        "contraseña": "contraseña123*",
+        "rol": "administrador",
+        "activo": false
+    },
+    "danna@gmail.com": {
+        "nombre": "Danna",
+        "contraseña": "contraseña123*",
+        "rol": "cliente",
+        "activo": true
+    }
+}
