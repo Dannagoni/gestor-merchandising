@@ -1,13 +1,13 @@
 {
     "ceo@gmail.com": {
         "nombre": "Danna Goni CEO",
-        "contraseña": "123",
+        "contraseña": "dannaceo*123",
         "rol": "administrador",
         "activo": true
     },
     "jefa@gmail.com": {
         "nombre": "Gabriela Morales Espinosa",
-        "contraseña": "Danna*",
+        "contraseña": "gabrielajefa*",
         "rol": "administrador",
         "activo": true
     },

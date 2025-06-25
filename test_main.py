@@ -34,6 +34,7 @@ def test_cargar_datos_inexistente_devuelve_default():
     default = {"lista": []}
     resultado = cargar_datos(ruta_prueba, default)
     assert resultado == default
+    os.remove(ruta_prueba)
 
 def test_guardar_y_cargar_datos():
     ruta = "archivo_test.json"

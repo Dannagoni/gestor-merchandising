@@ -1,32 +1,37 @@
 {
-    "camisas": {
-        "basica blanca": 10.0,
-        "basica negra": 10.0,
-        "manga larga": 25.0
-    },
-    "pantalones": {
-        "jean": 40.0,
-        "cargo": 35.0,
-        "algodon": 60.0,
-        "lino": 30.0
-    },
-    "vestidos": {
-        "bodycon": 15.0,
-        "strapless": 30.0,
-        "bubble": 40.0,
-        "veraniego": 25.0
-    },
-    "chaquetas": {
-        "cuero": 80.0,
-        "americana": 40.0,
-        "blazer": 60.0,
-        "gabardina": 120.0,
-        "chaleco": 25.0
-    },
-    "zapatos": {
-        "borcegos": 89.99
-    },
-    "chanclas": {
-        "azules": 2.99
-    }
+  "camisas": {
+    "basica blanca": 10.0,
+    "basica negra": 10.0,
+    "manga larga": 25.0
+  },
+  "pantalones": {
+    "jean": 40.0,
+    "cargo": 35.0,
+    "algodon": 60.0,
+    "lino": 30.0
+  },
+  "vestidos": {
+    "bodycon": 15.0,
+    "strapless": 30.0,
+    "bubble": 40.0,
+    "veraniego": 25.0
+  },
+  "chaquetas": {
+    "cuero": 80.0,
+    "americana": 40.0,
+    "blazer": 60.0,
+    "gabardina": 120.0,
+    "chaleco": 25.0
+  },
+  "zapatos": {
+    "borcegos": 89.99,
+    "zapatillas": 75.5,
+    "botas": 120.0,
+    "mocasines": 95.0
+  },
+  "chanclas": {
+    "azules": 2.99,
+    "negras": 3.49,
+    "rojas": 3.99
+  }
 }
