@@ -1,13 +1,13 @@
 {
     "ceo@gmail.com": {
         "nombre": "Danna Goni CEO",
-        "contraseña": "CeoPass123*",
+        "contraseña": "123",
         "rol": "administrador",
         "activo": true
     },
     "jefa@gmail.com": {
-        "nombre": "Gaby Espinosa",
-        "contraseña": "contraseña123@",
+        "nombre": "Gabriela Morales Espinosa",
+        "contraseña": "Danna*",
         "rol": "administrador",
         "activo": true
     },
@@ -15,11 +15,11 @@
         "nombre": "Nico Bayon",
         "contraseña": "contraseña456@",
         "rol": "administrador",
-        "activo": true
+        "activo": false
     },
     "agus@gmail.com": {
         "nombre": "Agustin Fernandez",
-        "contraseña": "contraseña789@",
+        "contraseña": "concon123C*",
         "rol": "cliente",
         "activo": true
     },
@@ -38,7 +38,7 @@
     "figa@gmail.com": {
         "nombre": "Bauti Crespo",
         "contraseña": "contraseña777*",
-        "rol": "cliente",
+        "rol": "administrador",
         "activo": true
     },
     "djsergio@gmail.com": {
@@ -63,6 +63,42 @@
         "nombre": "Danna",
         "contraseña": "contraseña123*",
         "rol": "cliente",
+        "activo": true
+    },
+    "fernando@gmail.com": {
+        "nombre": "Fernando",
+        "contraseña": "Danna123*",
+        "rol": "cliente",
+        "activo": true
+    },
+    "fernandox@gmail.com": {
+        "nombre": "Fer",
+        "contraseña": "Fernando123*",
+        "rol": "administrador",
+        "activo": true
+    },
+    "laura.admin@gmail.com": {
+        "nombre": "Laura Castillo",
+        "contraseña": "Laura2024!",
+        "rol": "administrador",
+        "activo": true
+    },
+    "mario.admin@gmail.com": {
+        "nombre": "Mario Díaz",
+        "contraseña": "MarioD*789",
+        "rol": "administrador",
+        "activo": true
+    },
+    "carla.admin@gmail.com": {
+        "nombre": "Carla Benítez",
+        "contraseña": "Carla_123!",
+        "rol": "administrador",
+        "activo": true
+    },
+    "juan.admin@gmail.com": {
+        "nombre": "Juan Rodríguez",
+        "contraseña": "Juan*456",
+        "rol": "administrador",
         "activo": true
     }
 }

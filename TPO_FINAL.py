@@ -894,21 +894,41 @@ def menu_administrador(stock, precios, usuarios, historial_ventas):
 def ver_usuarios_por_rol(rol):
     print(f"\n--- Lista de Usuarios con Rol: {rol.capitalize()} ---")
     try:
-        encontrados = False
-        for email, data in usuarios.items():
-            if data.get("rol") == rol and data.get("activo", True):
-                print(f"- Email: {email}, Nombre: {data.get('nombre', 'N/A')}")
-                encontrados = True
+        usuarios_filtrados = [
+            (email, data.get("nombre", "N/A"))
+            for email, data in usuarios.items()
+            if data.get("rol") == rol and data.get("activo", True)
+        ]
 
-        if not encontrados:
+        if not usuarios_filtrados:
             print("ℹ️ No se encontraron usuarios con ese rol.")
             logger.info(f"No se encontraron usuarios con el rol: {rol}")
         else:
+            mostrar_usuarios_en_tabla(usuarios_filtrados)
             logger.info(f"Se consultaron usuarios con rol: {rol}")
 
     except Exception as e:
         logger.error(f"Error al consultar usuarios por rol: {rol}: {e}")
         print("❌ Ocurrió un error al consultar los usuarios.")
+
+def mostrar_usuarios_en_tabla(lista_usuarios):
+    ancho_email = len("Email")
+    ancho_nombre = len("Nombre")
+
+    for email, nombre in lista_usuarios:
+        if len(email) > ancho_email:
+            ancho_email = len(email)
+        if len(nombre) > ancho_nombre:
+            ancho_nombre = len(nombre)
+
+    print(f"{'#':<3} 🎯 {'Email'.ljust(ancho_email)} | {'Nombre'.ljust(ancho_nombre)}")
+    print("-" * (ancho_email + ancho_nombre + 10))
+
+    for i, (email, nombre) in enumerate(lista_usuarios, start=1):
+        print(f"{str(i) + '.':<3} 🎯 {email.ljust(ancho_email)} | {nombre.ljust(ancho_nombre)}")
+
+    print("-" * (ancho_email + ancho_nombre + 10))
+    
 
 def ver_historial_ventas_admin(historial_a_mostrar):
     print("\n--- Historial Completo de Ventas (Admin) ---")
@@ -1119,8 +1139,13 @@ def gestionar_clientes(usuarios, guardar_datos, ruta):
 
 def buscar_clientes_por_nombre(nombre_buscado, usuarios):
     nombre_buscado = nombre_buscado.strip().lower()
-    return [(email, datos["nombre"]) for email, datos in usuarios.items()
-            if datos.get("rol") == "cliente" and nombre_buscado in datos.get("nombre", "").lower()]
+    return [
+        (email, datos["nombre"])
+        for email, datos in usuarios.items()
+        if datos.get("rol") == "cliente"
+        and datos.get("activo", True)
+        and nombre_buscado in datos.get("nombre", "").lower()
+    ]
 
 def seleccionar_cliente(encontrados):
     if len(encontrados) == 1:
@@ -1199,7 +1224,9 @@ def buscar_administradores(nombre_a_buscar, usuarios):
     return [
         (email, datos["nombre"])
         for email, datos in usuarios.items()
-        if datos.get("rol") == "administrador" and nombre_a_buscar in datos.get("nombre", "").lower()
+        if datos.get("rol") == "administrador"
+        and datos.get("activo", True)
+        and nombre_a_buscar in datos.get("nombre", "").lower()
     ]
 
 def seleccionar_administrador(encontrados, input_fn=input):
@@ -1223,48 +1250,78 @@ def seleccionar_administrador(encontrados, input_fn=input):
         except ValueError:
             print("⚠️ Ingresaste algo que no es un número. Intentá nuevamente.")
 
-def actualizar_administrador(email, usuarios):
-    print(f"\n--- Actualizar datos para: {usuarios[email].get('nombre')} ({email}) ---")
+def actualizar_nombre_administrador(email, usuarios):
+    nuevo_nombre = pedir_input_con_cancelar(
+        f"Nuevo nombre (actual: '{usuarios[email].get('nombre')}', Enter para no cambiar): "
+    )
+    if nuevo_nombre is not None and nuevo_nombre.strip():
+        usuarios[email]["nombre"] = nuevo_nombre.strip()
+        print("🏷️ Nombre actualizado.")
+        logger.info(f"Nombre de administrador actualizado para {email}: {nuevo_nombre.strip()}")
+        return True
+    elif nuevo_nombre == "":
+        print("ℹ️ Nombre no modificado.")
+        logger.info(f"Nombre no modificado para {email} (se presionó Enter).")
+    return False
 
-    try:
-        nuevo_nombre_input = pedir_input_con_cancelar(
-            f"Nuevo nombre (actual: '{usuarios[email].get('nombre')}', Enter para no cambiar): "
-        )
-        if nuevo_nombre_input is not None and nuevo_nombre_input.strip():
-            usuarios[email]["nombre"] = nuevo_nombre_input.strip()
-            print("🏷️ Nombre actualizado.")
-            logger.info(f"Nombre de administrador actualizado para {email}: {nuevo_nombre_input.strip()}")
-        elif nuevo_nombre_input == "":
-            print("ℹ️ Nombre no modificado.")
-            logger.info(f"Nombre no modificado para {email} (se presionó Enter).")
 
-        nueva_contraseña_input = pedir_input_con_cancelar("Nueva contraseña (Enter para no cambiar): ")
-        if nueva_contraseña_input:
-            if len(nueva_contraseña_input) < 6 or not any(c.isupper() for c in nueva_contraseña_input):
-                print("⚠️ La contraseña debe tener al menos 6 caracteres, una mayúscula y caracter especial. No se actualizó la contraseña.")
-                logger.debug(f"Contraseña inválida ingresada para {email}")
-            else:
-                confirmar = pedir_input_con_cancelar("Confirmá la nueva contraseña: ")
-                if confirmar and confirmar == nueva_contraseña_input:
-                    usuarios[email]["contraseña"] = nueva_contraseña_input
-                    print("🔑 Contraseña actualizada.")
-                    logger.info(f"Contraseña actualizada para administrador {email}")
-                elif confirmar is None:
-                    print("ℹ️ Actualización cancelada (confirmación).")
-                    logger.info(f"Confirmación de contraseña cancelada para {email}")
-                else:
-                    print("⚠️ Las contraseñas no coinciden. No se actualizó la contraseña.")
-                    logger.debug(f"Confirmación de contraseña incorrecta para {email}")
-        elif nueva_contraseña_input == "":
+def actualizar_contraseña_administrador(email, usuarios):
+    while True:
+        nueva_contraseña = pedir_input_con_cancelar("Nueva contraseña (Enter para no cambiar): ")
+        if nueva_contraseña == "":
             print("ℹ️ Contraseña no modificada.")
             logger.info(f"Contraseña no modificada para {email} (se presionó Enter).")
+            return False
+        elif nueva_contraseña is None:
+            print("↩️ Operación cancelada.")
+            logger.info(f"Actualización de contraseña cancelada para {email}.")
+            return False
 
-        guardar_datos(RUTA_USUARIOS, usuarios)
-        print(f"✅ Datos del administrador '{email}' actualizados (si se realizaron cambios).")
+        caracteres_especiales = "!@#$%^&*()-_=+[{]};:'\",<.>/?\\|`~"
+        tiene_mayuscula = any("A" <= c <= "Z" for c in nueva_contraseña)
+        tiene_especial = any(c in caracteres_especiales for c in nueva_contraseña)
+
+        if len(nueva_contraseña) < 6 or not tiene_mayuscula or not tiene_especial:
+            print("⚠️ La contraseña debe tener al menos 6 caracteres, una mayúscula y un caracter especial.")
+            logger.debug(f"Contraseña inválida ingresada para {email}")
+            continue
+
+        confirmacion = pedir_input_con_cancelar("Confirmá la nueva contraseña: ")
+        if confirmacion is None:
+            print("↩️ Operación cancelada (confirmación).")
+            logger.info(f"Confirmación de contraseña cancelada para {email}")
+            return False
+        elif confirmacion == nueva_contraseña:
+            usuarios[email]["contraseña"] = nueva_contraseña
+            print("🔑 Contraseña actualizada.")
+            logger.info(f"Contraseña actualizada para administrador {email}")
+            return True
+        else:
+            print("⚠️ Las contraseñas no coinciden. Intentá nuevamente.")
+            logger.debug(f"Confirmación de contraseña incorrecta para {email}")
+            continue
+
+
+def actualizar_administrador(email, usuarios):
+    print(f"\n--- Actualizar datos para: {usuarios[email].get('nombre')} ({email}) ---")
+    hubo_cambios = False
+
+    try:
+        if actualizar_nombre_administrador(email, usuarios):
+            hubo_cambios = True
+        if actualizar_contraseña_administrador(email, usuarios):
+            hubo_cambios = True
+
+        if hubo_cambios:
+            guardar_datos(RUTA_USUARIOS, usuarios)
+            print(f"✅ Datos del administrador '{email}' actualizados.")
+        else:
+            print("ℹ️ No se realizaron cambios.")
 
     except Exception as e:
         print("❌ Ocurrió un error al actualizar los datos del administrador.")
         logger.error(f"Error al actualizar datos del administrador {email}: {e}")
+
 
 def eliminar_usuario_logicamente(email, nombre, usuarios, guardar_datos, ruta):
     if email not in usuarios:
